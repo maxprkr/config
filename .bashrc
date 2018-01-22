@@ -147,6 +147,7 @@ export LC_ALL=C
 # export variables
 export HISTTIMEFORMAT="%d %T "
 #export PYTHONPATH=/usr/local/caffe2:/usr/local/caffe:$PYTHONPATH
+export EDITOR=vim
 
 #export HISTSIZE=10000
 #export HISEFILESIZE=10000
