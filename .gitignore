@@ -3,4 +3,5 @@
 # But  not these files...
 !.bashrc
 !.vimrc
+!.emacs.d/init.el
 !.gitignore
