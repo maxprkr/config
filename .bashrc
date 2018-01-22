@@ -132,11 +132,13 @@ mkcd ()
 } # create a new directory and cd into it
 
 ## $xinput // to see the devices; screen is normally 10
-xinput disable 10 #disable the touch screen 
+#xinput disable 10 #disable the touch screen 
 alias tchse='xinput enable 10; echo "TouCH Screen Enabled"'
 alias tchsd='xinput disable 10; echo "TouCH Screen Disabled"'
 alias tchpe='xinput enable 14; echo "TouCH Pad Enabled"'
 alias tchpd='xinput disable 14; echo "TouCH Pad Disabled"'
+tchsd
+tchpd
 
 # arrow up: history extend the command start
 bind '"\e[A": history-search-backward'
