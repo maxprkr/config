@@ -19,6 +19,8 @@
 (add-to-list 'package-archives
              '("melpa-stable" . "https://stable.melpa.org/packages/"))
 (add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+(add-to-list 'package-archives '("marmalade" . "https://marmalade-repo.org/packages/") t)
 
 ;;;;;;;;   Packages: ;;;;;;;;;;;;;;;
 (package-initialize)  ;; !! mandatory to keep this before loading the packages
@@ -41,6 +43,9 @@
     (setq ido-enable-flex-matching t)
     (setq ido-use-faces nil)    ;; disable ido faces to see flx highlights.
 
+;;;;;;;;; HIGHLIGHT... .vimrc !!!!! ;;;;;;;;;
+(require 'vimrc-mode)
+(add-to-list 'auto-mode-alist '("\\.vim\\(rc\\)?\\'" . vimrc-mode))
 
 ;;;;;;;;;;;;;;;;;  Key Bindings   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (global-set-key (kbd "M-1") 'shell-command) ; Alt+1 easier than Alt-! 

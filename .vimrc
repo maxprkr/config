@@ -1,22 +1,18 @@
 set nocompatible
 filetype off
-# Vim (~/.vim/autoload)
-curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-" Plugins will be downloaded under the specified directory.
-call plug#begin('~/.vim/plugged')
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
-
-
-"Plugin 'gmarik/vundle'
-Plug 'scrooloose/nerdtree.git'
-Plug 'Buffergator'
-Plug 'tmhedberg/SimpylFold'
-Plug 'vim-scripts/indentpython.vim'
-Plug 'Valloric/YouCompleteMe'
-Plug 'scrooloose/nerdcommenter'
-Plug 'vim-syntastic/syntastic'
-Plug 'nvie/vim-flake8'
+Plugin 'gmarik/vundle'
+Plugin 'scrooloose/nerdtree.git'
+Plugin 'Buffergator'
+Plugin 'tmhedberg/SimpylFold'
+Plugin 'vim-scripts/indentpython.vim'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'vim-syntastic/syntastic'
+Plugin 'nvie/vim-flake8'
 
 
 let g:SimpylFold_docstring_preview=1
@@ -55,7 +51,7 @@ let python_hightlight_all = 1
 let g:ycm_autoclose_preview_window_after_completion=1
 map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>i
 
-python with virtualenv support
+"python with virtualenv support
 "py << EOF
 "import os
 "import sys
@@ -66,7 +62,7 @@ python with virtualenv support
 "      EOF
 
 set splitbelow
-set splitrigh
+set splitright
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
