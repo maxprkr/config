@@ -5,14 +5,14 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
-""Plugin 'gmarik/vundle'
-""Plugin 'Buffergator'
-""Plugin 'tmhedberg/SimpylFold'
-""Plugin 'vim-scripts/indentpython.vim'
-""Plugin 'Valloric/YouCompleteMe'
+Plugin 'gmarik/vundle'
+Plugin 'Buffergator'
+Plugin 'tmhedberg/SimpylFold'
+Plugin 'vim-scripts/indentpython.vim'
+Plugin 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/nerdcommenter'
-""Plugin 'vim-syntastic/syntastic'
-""Plugin 'nvie/vim-flake8'
+Plugin 'vim-syntastic/syntastic'
+Plugin 'nvie/vim-flake8'
 call vundle#end()
 
 let mapleader=","
