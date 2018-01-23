@@ -1,28 +1,32 @@
 set nocompatible
 filetype off
 " set the runtime path to include Vundle and initialize
+
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-
-set encoding=utf-8
-
-Plugin 'gmarik/vundle'
-Plugin 'scrooloose/nerdtree.git'
-Plugin 'Buffergator'
-Plugin 'tmhedberg/SimpylFold'
-Plugin 'vim-scripts/indentpython.vim'
-Plugin 'Valloric/YouCompleteMe'
+Plugin 'VundleVim/Vundle.vim'
+""Plugin 'gmarik/vundle'
+""Plugin 'Buffergator'
+""Plugin 'tmhedberg/SimpylFold'
+""Plugin 'vim-scripts/indentpython.vim'
+""Plugin 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/nerdcommenter'
-Plugin 'vim-syntastic/syntastic'
-Plugin 'nvie/vim-flake8'
+""Plugin 'vim-syntastic/syntastic'
+""Plugin 'nvie/vim-flake8'
+call vundle#end()
 
+let mapleader=","
+set mouse=a
+set timeout timeoutlen=1500
+set encoding=utf-8
+filetype plugin on
+filetype plugin indent on
 
 let g:SimpylFold_docstring_preview=1
 let python_highlight_all=1
 syntax on
 
 " Now we can turn our filetype functionality back on
-filetype plugin indent on
 
 "enable syntax highlighting
 syntax enable
@@ -41,7 +45,7 @@ set fileformat=unix
 
 " >> or << commands shift lines by 4 spaces
 set shiftwidth=4
-set cursorline
+""set cursorline
 " show matching pair of [] {} ()
 set showmatch
 " Python syntax hihglighting
@@ -69,9 +73,12 @@ nnoremap <C-H> <C-W><C-H>
 " Enable folding
 set foldmethod=indent
 set foldlevel=99
+set clipboard=unnamendplus
+set paste
+
 " Enable folding with the spacebar
 nnoremap <space> za
-
+map <F2> : echo 'Time is:' . strftime('%c')<CR>
 
 
 
