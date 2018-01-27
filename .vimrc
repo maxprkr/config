@@ -5,7 +5,7 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'gmarik/vundle'
+""Plugin 'gmarik/vundle'
 Plugin 'Buffergator'
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'vim-scripts/indentpython.vim'
@@ -32,6 +32,7 @@ syntax on
 syntax enable
 
 set number
+set wildmenu
 
 "au BufNewFile,BufRead *.py
 set tabstop=4
@@ -72,15 +73,18 @@ nnoremap <C-H> <C-W><C-H>
 
 " Enable folding
 set foldmethod=indent
-set foldlevel=99
+""set foldlevel=1
 set clipboard=unnamendplus
 set paste
 
 " Enable folding with the spacebar
 nnoremap <space> za
 map <F2> : echo 'Time is:' . strftime('%c')<CR>
+map <F3> : help <CR>
 
 
-
+" Make shift-insert work like in Xterm
+""map <S-Insert> <MiddleMouse>
+map! <S-Insert> <MiddleMouse>
 
 

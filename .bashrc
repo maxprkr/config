@@ -110,18 +110,22 @@ export PATH="/home/ilya/anaconda3/bin:$PATH"
 
 ############## ilya@yoga2 customisations  #######################
 alias sbash='source ~/.bashrc'
-alias gvbash='gvim ~/.bashrc'
+alias vbash='vim ~/.bashrc'
 alias lsa='ls -la'
 alias h='history'
 alias lsg='ls -la | grep'
-alias cddl='cd ~/Downloads'
 alias cdpp='cd ~/projects'
+alias cddl='cd ~/Downloads'
+alias cdds='cd ~/Downloads/deep_soft'
+alias cddp='cd /home/ilya/projects/DeepProj/' 
+alias cdpt='cd /home/ilya/projects/DeepProj/PyTorch/pyt_repo' 
+alias cdvm='cd /home/ilya/projects/vim'
+alias cddd='cd ~/Downloads/deep_data'
 alias cdsp='cd ~/projects/SportLi'
 alias cdcvt='cd ~/OpenCV/opencv-3.4.0/doc/py_tutorials'
 alias cdcv='cd ~/OpenCV/opencv-3.4.0'
 alias cdcvp='cd ~/projects/SportLi/OcvCPP'
 alias cdbb='cd ~/projects/SportLi/OcvCPP/BitBall'
-alias cdcf='cd /home/ilya/projects/Caffe2Proj/MyTut' 
 alias cdtu='cd /home/ilya/projects/Caffe2Proj/MyTut/Tools' 
 alias skype="~/Downloads/software/skype/usr/bin/skypeforlinux"
 alias smgit="~/programs/smartgit/bin/smartgit.sh &"
@@ -133,6 +137,7 @@ mkcd ()
 
 ## $xinput // to see the devices; screen is normally 10
 #xinput disable 10 #disable the touch screen 
+alias py3='python3'
 alias tchse='xinput enable 10; echo "TouCH Screen Enabled"'
 alias tchsd='xinput disable 10; echo "TouCH Screen Disabled"'
 alias tchpe='xinput enable 14; echo "TouCH Pad Enabled"'
@@ -152,3 +157,9 @@ export EDITOR=vim
 #export HISTSIZE=10000
 #export HISEFILESIZE=10000
 
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/ilya/programs/google-cloud-sdk/path.bash.inc' ]; then source '/home/ilya/programs/google-cloud-sdk/path.bash.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/ilya/programs/google-cloud-sdk/completion.bash.inc' ]; then source '/home/ilya/programs/google-cloud-sdk/completion.bash.inc'; fi
