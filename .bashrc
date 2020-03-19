@@ -9,11 +9,18 @@ case $- in
 esac
 
 # don't put duplicate lines or lines starting with space in the history.
+# See bash(1) for more options
 HISTCONTROL=ignoreboth
-shopt -s histappend # append to the history file, don't overwrite it
-HISTSIZE=10000
-HISTFILESIZE=20000
 
+# append to the history file, don't overwrite it
+shopt -s histappend
+
+# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+HISTSIZE=1000
+HISTFILESIZE=2000
+
+# check the window size after each command and, if necessary,
+# update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
 # If set, the pattern "**" used in a pathname expansion context will
@@ -77,6 +84,14 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
+# colored GCC warnings and errors
+#export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+
+# some more ls aliases
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
@@ -101,65 +116,55 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# Virtual Environment Wrapper
-#source /usr/local/bin/virtualenvwrapper.sh
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/ilya/programs/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/ilya/programs/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/ilya/programs/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/ilya/programs/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+conda activate nv
+# <<< conda initialize <<<
 
-# added by Anaconda3 installer
-export PATH="/home/ilya/anaconda3/bin:$PATH"
 
-
-############## ilya@yoga2 customisations  #######################
+### MY_CUSTOMIZATIONS
 alias sbash='source ~/.bashrc'
-alias vbash='vim ~/.bashrc'
+alias vbash='gvim ~/.bashrc'
+alias gvbash='gvim ~/.bashrc'  
+alias vvim='gvim ~/.vimrc'
 alias lsa='ls -la'
 alias h='history'
 alias lsg='ls -la | grep'
-alias cdpp='cd ~/projects'
-alias cddl='cd ~/Downloads'
-alias cdds='cd ~/Downloads/deep_soft'
-alias cddp='cd /home/ilya/projects/DeepProj/' 
-alias cdpt='cd /home/ilya/projects/DeepProj/PyTorch/pyt_repo' 
-alias cdvm='cd /home/ilya/projects/vim'
-alias cddd='cd ~/Downloads/deep_data'
-alias cdsp='cd ~/projects/SportLi'
-alias cdcvt='cd ~/OpenCV/opencv-3.4.0/doc/py_tutorials'
-alias cdcv='cd ~/OpenCV/opencv-3.4.0'
-alias cdcvp='cd ~/projects/SportLi/OcvCPP'
-alias cdbb='cd ~/projects/SportLi/OcvCPP/BitBall'
-alias cdtu='cd /home/ilya/projects/Caffe2Proj/MyTut/Tools' 
-alias skype="~/Downloads/software/skype/usr/bin/skypeforlinux"
-alias smgit="~/programs/smartgit/bin/smartgit.sh &"
-mkcd ()
-{
-    mkdir -p -- "$1" &&
-    cd -P -- "$1"
-} # create a new directory and cd into it
-
-## $xinput // to see the devices; screen is normally 10
-#xinput disable 10 #disable the touch screen 
-alias py3='python3'
-alias tchse='xinput enable 10; echo "TouCH Screen Enabled"'
-alias tchsd='xinput disable 10; echo "TouCH Screen Disabled"'
-alias tchpe='xinput enable 14; echo "TouCH Pad Enabled"'
-alias tchpd='xinput disable 14; echo "TouCH Pad Disabled"'
-tchsd
-tchpd
+alias cddnl='cd ~/Downloads'
+alias cddta='cd ~/Downloads/data/' 
+alias cdprj='cd ~/projects'
+alias cdyol3='cd ~/projects/deep/yolo/yolov3/'
+alias cddnet='cd ~/projects/deep/darknet/'
+alias cpq='copyq enable; copyq show'
+alias clion='sh /opt/clion-*/bin/clion.sh'
+alias nsgt='nsight -vm /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java&'
+alias dnetclone='git clone https://github.com/yuanxy92/darknet.git'
+mkcd() { 
+   mkdir $1
+   cd $1 
+}
 
 # arrow up: history extend the command start
-bind '"\e[A": history-search-backward'
+bind '"\e[A": history-search-backward'            # arrow up
+bind '"\e[B": history-search-forward'             # arrow down
 export LC_ALL=C
 
 # export variables
+export PATH=/usr/local/cuda-10.2/bin${PATH:+:${PATH}}$
+export LD_LIBRARY_PATH=/usr/local/cuda-10.2/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
 export HISTTIMEFORMAT="%d %T "
-#export PYTHONPATH=/usr/local/caffe2:/usr/local/caffe:$PYTHONPATH
-export EDITOR=vim
-
 #export HISTSIZE=10000
 #export HISEFILESIZE=10000
 
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/home/ilya/programs/google-cloud-sdk/path.bash.inc' ]; then source '/home/ilya/programs/google-cloud-sdk/path.bash.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/home/ilya/programs/google-cloud-sdk/completion.bash.inc' ]; then source '/home/ilya/programs/google-cloud-sdk/completion.bash.inc'; fi

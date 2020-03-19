@@ -1,90 +1,66 @@
-set nocompatible
-filetype off
-" set the runtime path to include Vundle and initialize
+" An example for a vimrc file.
+"
+" Maintainer:	Bram Moolenaar <Bram@vim.org>
+" Last change:	2017 Sep 20
+"
+" To use it, copy it to
+"     for Unix and OS/2:  ~/.vimrc
+"	      for Amiga:  s:.vimrc
+"  for MS-DOS and Win32:  $VIM\_vimrc
+"	    for OpenVMS:  sys$login:.vimrc
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-Plugin 'VundleVim/Vundle.vim'
-""Plugin 'gmarik/vundle'
-Plugin 'Buffergator'
-Plugin 'tmhedberg/SimpylFold'
-Plugin 'vim-scripts/indentpython.vim'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'vim-syntastic/syntastic'
-Plugin 'nvie/vim-flake8'
-call vundle#end()
+" When started as "evim", evim.vim will already have done these settings.
+if v:progname =~? "evim"
+  finish
+endif
 
-let mapleader=","
-set mouse=a
-set timeout timeoutlen=1500
-set encoding=utf-8
-filetype plugin on
-filetype plugin indent on
+" Get the defaults that most users want.
+source $VIMRUNTIME/defaults.vim
 
-let g:SimpylFold_docstring_preview=1
-let python_highlight_all=1
-syntax on
+if has("vms")
+  set nobackup		" do not keep a backup file, use versions instead
+else
+  set backup		" keep a backup file (restore to previous version)
+  if has('persistent_undo')
+    set undofile	" keep an undo file (undo changes after closing)
+  endif
+endif
 
-" Now we can turn our filetype functionality back on
+if &t_Co > 2 || has("gui_running")
+  " Switch on highlighting the last used search pattern.
+  set hlsearch
+endif
 
-"enable syntax highlighting
-syntax enable
+" Only do this part when compiled with support for autocommands.
+if has("autocmd")
 
-set number
-set wildmenu
+  " Put these in an autocmd group, so that we can delete them easily.
+  augroup vimrcEx
+  au!
 
-"au BufNewFile,BufRead *.py
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
-set textwidth=79
-set expandtab
-set autoindent
-set fileformat=unix
+  " For all text files set 'textwidth' to 78 characters.
+  autocmd FileType text setlocal textwidth=78
 
+  augroup END
 
-" >> or << commands shift lines by 4 spaces
-set shiftwidth=4
-""set cursorline
-" show matching pair of [] {} ()
-set showmatch
-" Python syntax hihglighting
-let python_hightlight_all = 1
-let g:ycm_autoclose_preview_window_after_completion=1
-map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>i
+else
 
-"python with virtualenv support
-"py << EOF
-"import os
-"import sys
-"if 'VIRTUAL_ENV' in os.environ:
-"  project_base_dir = os.environ['VIRTUAL_ENV']
-"    activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
-"      execfile(activate_this, dict(__file__=activate_this))
-"      EOF
+  set autoindent		" always set autoindenting on
 
-set splitbelow
-set splitright
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
+endif " has("autocmd")
 
-" Enable folding
-set foldmethod=indent
-""set foldlevel=1
-set clipboard=unnamendplus
-set paste
+" Add optional packages.
+"
+" The matchit plugin makes the % command work better, but it is not backwards
+" compatible.
+" The ! means the package won't be loaded right away but when plugins are
+" loaded during initialization.
+if has('syntax') && has('eval')
+  packadd! matchit
+endif
 
-" Enable folding with the spacebar
-nnoremap <space> za
-map <F2> : echo 'Time is:' . strftime('%c')<CR>
-map <F3> : help <CR>
-
-
-" Make shift-insert work like in Xterm
-""map <S-Insert> <MiddleMouse>
-map! <S-Insert> <MiddleMouse>
-
+"SINGLE KEY EXIT WITHOUT SAVE.
+:map <F2> :q!<CR>
+:map <F3> ZZ
+:set hls
 
